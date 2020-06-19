@@ -1,5 +1,6 @@
 import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {MatFormFieldAppearance} from '@angular/material/form-field';
 
 @Component({
   selector: 'mat-input-counter',
@@ -16,7 +17,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 export class InputCounterComponent implements OnInit, ControlValueAccessor {
 
   @Input()
-  value: number;
+  _value: number;
 
   @Input()
   max: number;
@@ -25,13 +26,16 @@ export class InputCounterComponent implements OnInit, ControlValueAccessor {
   min: number;
 
   @Input()
-  step: number;
+  step = 1;
+
+  @Input()
+  appearance: MatFormFieldAppearance = 'standard';
 
   @Input()
   placeholder: string;
 
   @Input()
-  label: string;
+  label = 'Number';
 
   @Output()
   change: EventEmitter<number> = new EventEmitter<number>();
@@ -39,7 +43,31 @@ export class InputCounterComponent implements OnInit, ControlValueAccessor {
   propagateChange = (_: any) => {
   };
 
+  get value() {
+    return this._value;
+  }
+
+  set value(val) {
+    this._value = val;
+    this.propagateChange(this._value);
+  }
+
   ngOnInit(): void {
+  }
+
+  increment() {
+    console.log('incr', this.value);
+    if (!this.value) {
+      this.value = 0;
+    }
+    this.value += this.step;
+  }
+
+  decrement() {
+    if (!this.value) {
+      this.value = 0;
+    }
+    this.value -= this.step;
   }
 
   writeValue(obj: any): void {
