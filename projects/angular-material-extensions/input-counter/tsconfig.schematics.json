@@ -15,7 +15,7 @@
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "rootDir": "schematics",
-    "outDir": "../../../dist/angular-material-extensions/google-maps-autocomplete/schematics",
+    "outDir": "../../../dist/angular-material-extensions/input-counter/schematics",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "sourceMap": true,
