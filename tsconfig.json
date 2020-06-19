@@ -14,7 +14,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@angular-material-extensions/input-counter": [
+        "dist/angular-material-extensions/input-counter/angular-material-extensions-input-counter",
+        "dist/angular-material-extensions/input-counter"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
