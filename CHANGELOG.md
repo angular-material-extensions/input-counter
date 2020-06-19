@@ -1,3 +1,5 @@
+* docs(project): Updating CHANGELOG.md for v0.1.1 (5df53df)
+
 
 
 ## [0.1.1](https://github.com/angular-material-extensions/input-counter/compare/0.1.0...0.1.1) (2020-06-19)
