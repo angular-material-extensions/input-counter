@@ -9,7 +9,7 @@
     "build:lib": "ng build @angular-material-extensions/input-counter",
     "build:lib:watch": "ng build @angular-material-extensions/input-counter --watch",
     "build:ssr": "ng build --prod && ng run input-counter:server:production",
-    "deploy": "ng deploy --base-href=/google-maps-autocomplete/ --no-build",
+    "deploy": "ng deploy --base-href=/input-counter/ --no-build",
     "dev:ssr": "ng run input-counter:serve-ssr",
     "test": "ng test",
     "lint": "ng lint",
