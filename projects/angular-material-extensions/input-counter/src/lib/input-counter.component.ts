@@ -50,13 +50,13 @@ export class InputCounterComponent implements OnInit, ControlValueAccessor {
   set value(val) {
     this._value = val;
     this.propagateChange(this._value);
+    this.change.emit(this._value);
   }
 
   ngOnInit(): void {
   }
 
   increment() {
-    console.log('incr', this.value);
     if (!this.value) {
       this.value = 0;
     }

@@ -21,17 +21,9 @@
 
 <p align="center">
   <img alt="@angular-material-extensions/input-counter" style="text-align: center;"
-   src="https://raw.githubusercontent.com/angular-material-extensions/input-counter/HEAD/assets/demo1.gif">
+   src="https://raw.githubusercontent.com/angular-material-extensions/input-counter/HEAD/assets/ex1.gif">
 </p>
 
-<p align="center">
-  <img alt="@angular-material-extensions/input-counter" style="text-align: center;"
-   src="https://raw.githubusercontent.com/angular-material-extensions/input-counter/HEAD/assets/v3.0.0/search.gif">
-</p>
-
-Stating with v1.3.0, you can now use this library without material2's dependency! To
-enable this goolgle maps autocomplate api as feature, you can just add `matGoogleMapsAutocomplete` 
-to any html input element! 
 
 ## Built by and for developers :heart:
 Do you have any question or suggestion ? Please do not hesitate to contact us!
@@ -48,7 +40,6 @@ by starring :star: and sharing it :loudspeaker:
 - [Installation](#installation)
 - [Usage](#usage)
 - [Documentation](#documentation)
-- [Run Demo App Locally](#run-demo-app-locally)
 - [Development](#development)
 - [Other Angular Libraries](#other-angular-libraries)
 - [Support](#support)
@@ -65,18 +56,6 @@ View all the directives and components in action at [https://angular-material-ex
 ## Dependencies
 * [Angular](https://angular.io) (*requires* Angular 2 or higher | we are using already V9 ;)
 
-for the directive as standalone you just need to install the agm core module
-- [agm - angular google maps v1.1.0](https://www.npmjs.com/package/@agm/core)
-
-```bash
-npm i @agm/core 
-```
-
-optional
-
-```bash
-npm i -D @types/googlemaps 
-```
 
 <a name="installation"/>
 
@@ -108,7 +87,6 @@ for the ui input component, please consider to install the following packages
 - [angular forms v9.x](https://www.npmjs.com/package/@angular/forms)
 - [angular material v9.x](https://www.npmjs.com/package/@angular/material)
 - [angular cdk v9.x](https://www.npmjs.com/package/@angular/cdk)
-- [agm - angular google maps v1.1.0](https://www.npmjs.com/package/@agm/core)
 
 ```bash
 npm i @angular/cdk @angular/material @angular/animations @angular/forms 
@@ -133,38 +111,32 @@ In your systemjs config file, `map` needs to tell the System loader where to loo
 
 Once installed you need to import the main module:
 ```js
-import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/input-counter';
+import { MatInputCounterModule } from '@angular-material-extensions/input-counter';
 ```
 The only remaining part is to list the imported module in your application module. The exact method will be slightly
-different for the root (top-level) module for which you should end up with the code similar to (notice ` MatGoogleMapsAutocompleteModule.forRoot()`):
+different for the root (top-level) module for which you should end up with the code similar to (notice ` MatInputCounterModule.forRoot()`):
 ```js
-import { AgmCoreModule } from '@agm/core';
-import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/input-counter';
+import { MatInputCounterModule } from '@angular-material-extensions/input-counter';
 
 @NgModule({
   declarations: [AppComponent, ...],
   imports: [
-     // important !!!
-     AgmCoreModule.forRoot({
-          apiKey: 'YOUR_KEY',
-          libraries: ['places']
-        }),
-     MatGoogleMapsAutocompleteModule, ...],  
+     MatInputCounterModule, ...],  
   bootstrap: [AppComponent]
 })
 export class AppModule {
 }
 ```
 
-Other modules in your application can simply import ` MatGoogleMapsAutocompleteModule `:
+Other modules in your application can simply import ` MatInputCounterModule `:
 
 ```js
-import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/input-counter';
+import { MatInputCounterModule } from '@angular-material-extensions/input-counter';
 
 @NgModule({
   declarations: [OtherComponent, ...],
   imports: [
-     MatGoogleMapsAutocompleteModule, ...], 
+     MatInputCounterModule, ...], 
 })
 export class OtherModule {
 }
@@ -174,175 +146,53 @@ export class OtherModule {
 
 ## [Usage](https://angular-material-extensions.github.io/input-counter/getting-started)
 
-### As directive
 
-add `matGoogleMapsAutocomplete` to your target html input element to enable the google maps autocomplete api as feature
+### `mat-input-counter` 
+
 
 ```html
-<mat-form-field>
-  <mat-label>Address << using the directive >></mat-label>
-  <input matInput
-       matGoogleMapsAutocomplete
-       [country]="de"
-       (onAutocompleteSelected)="onAutocompleteSelected($event)"
-       (onLocationSelected)="onLocationSelected($event)">
-</mat-form-field>
+ <mat-input-counter [min]="1"
+                    [max]="10"
+                    [step]="0.5"
+                    [label]="Your label"
+                    placeholder="your place holder">
+        </mat-input-counter>
 ```
-### As components
 
-#### or alternatively use `mat-google-maps-auto-complete`, the UI wrapper
-
-add `mat-google-maps-auto-complete` element to your template
-
-### `mat-google-maps-auto-complete` 
+#### With Reactive forms
 
 ```html
-<mat-input-counter [appearance]="appearance.OUTLINE"
-                              (onAutocompleteSelected)="onAutocompleteSelected($event)"
-                              (onLocationSelected)="onLocationSelected($event)">
-      </mat-input-counter>
-```
-
-A customized `mat-input-counter` 
-
-```html
-<mat-input-counter  country="us"
-                               type="address"
-                               (onAutocompleteSelected)="onAutocompleteSelected($event)"
-                               (onLocationSelected)="onLocationSelected($event)">
-</mat-input-counter>
-```
-
-combine the result of the `mat-input-counter` with a google map instance via [@agm](https://angular-maps.com/api-docs/agm-core/)
-
-```html
-<div class="container" fxLayout="column" fxLayoutAlign="center">
-
-    <div fxFlex>
-      <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
-        <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-      </agm-map>
-    </div>
-
-    <div fxFlex fxFlexAlign="center"
-         class="autocomplete-container"
-         [ngStyle.xs]="{'min-width.%': 100}"
-         [ngStyle.sm]="{'width.%': 70}">
-      <mat-input-counter (onAutocompleteSelected)="onAutocompleteSelected($event)"
-                                    (onLocationSelected)="onLocationSelected($event)"
-                                    (onGermanAddressMapped)="onGermanAddressMapped($event)">
-      </mat-input-counter>
-    </div>
-
-  </div>
-```
-
-
-in your component, the code will be similar to --> 
-
-```typescript
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Title} from '@angular/platform-browser';
-import {Location, Appearance, GermanAddress} from '@angular-material-extensions/input-counter';
-import {} from '@types/googlemaps';
-import PlaceResult = google.maps.places.PlaceResult;
-
-@Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-})
-export class HomeComponent implements OnInit {
-
-  public appearance = Appearance;
-  public zoom: number;
-  public latitude: number;
-  public longitude: number;
-  public selectedAddress: PlaceResult;
-
-  constructor(private titleService: Title) {
-  }
-
-  ngOnInit() {
-    this.titleService.setTitle('Home | @angular-material-extensions/input-counter');
-
-    this.zoom = 10;
-    this.latitude = 52.520008;
-    this.longitude = 13.404954;
-
-    this.setCurrentPosition();
-
-  }
-
-  private setCurrentPosition() {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 12;
-      });
-    }
-  }
-
-  onAutocompleteSelected(result: PlaceResult) {
-    console.log('onAutocompleteSelected: ', result);
-  }
-
-  onLocationSelected(location: Location) {
-    console.log('onLocationSelected: ', location);
-    this.latitude = location.latitude;
-    this.longitude = location.longitude;
-  }
-
- onGermanAddressMapped($event: GermanAddress) {
-    console.log('onGermanAddressMapped', $event);
-  }
-
-}
-
-```
-
-
-#### Reactive Forms Example
-
-```html
-<form [formGroup]="addressFormGroup">
-    <mat-search-input-counter formControlName="address">
-    </mat-search-input-counter>
-    
-    // OR
-
-    <mat-input-counter formControlName="address">
-    </mat-input-counter>
-
-</form>
+      <form [formGroup]="formGroup">
+        <mat-input-counter formControlName="inputCounter"
+                           [min]="+options.min"
+                           [max]="+options.max"
+                           [step]="+options.step"
+                           [label]="options.label"
+                           [placeholder]="options.placeholder">
+        </mat-input-counter>
+      </form>
 ```
 
 ```typescript
 
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+formGroup: FormGroup;
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
-})
-export class AppComponent implements OnInit {
-
-  addressFormGroup: FormGroup;
-
-  ngOnInit(): void {
-    this.addressFormGroup = new FormGroup({
-      address: new FormControl(),
+ this.formGroup = new FormGroup({
+      inputCounter: new FormControl()
     });
-
-    this.addressFormGroup.get('address').valueChanges.subscribe(value => console.log('value changed', value))
-  }
-}
-
 ```
+
+
+<p align="center">
+  <img alt="@angular-material-extensions/input-counter" style="text-align: center;"
+   src="https://raw.githubusercontent.com/angular-material-extensions/input-counter/HEAD/assets/ex1.png">
+</p>
+
+<p align="center">
+  <img alt="@angular-material-extensions/input-counter" style="text-align: center;"
+   src="https://raw.githubusercontent.com/angular-material-extensions/input-counter/HEAD/assets/ex2.png">
+</p>
+
 
 <a name="api"/>
 
@@ -351,91 +201,14 @@ export class AppComponent implements OnInit {
 ### `matGoogleMapsAutocomplete`
 | option | bind  |  type  |   default    | description  |
 |:-------------------|:--------:|:------:|:------------:|:-------------------------------------------------------------------------------------------------|    
-| value               | `Input()`   |  PlaceResult ;      | - |  
-| address             | `Input()`   |  PlaceResult | string;      | - |  
-| country             | `Input()`   | string | string[];          | - | can be used to restrict results to specific groups. Currently, you can use componentRestrictions to filter by up to 5 countries. Countries must be passed as as a two-character, ISO 3166-1 Alpha-2 compatible country code. Multiple countries must be passed as a list of country codes.  
-| placeIdOnly         | `Input()`   | boolean                     | - | can be used to instruct the Autocomplete widget to retrieve only Place IDs. On calling getPlace() on the Autocomplete object, the PlaceResult made available will only have the place id, types and name properties set. You can use the returned place ID with calls to the Places, Geocoding, Directions or Distance Matrix services.
-| strictBounds        | `Input()`   | boolean                     | - | is a boolean specifying whether the API must return only those places that are strictly within the region defined by the given bounds. The API does not return results outside this region even if they match the user input.
-| types               | `Input()`   | string[]                    | - |  An array of types specifies an explicit type or a type collection, as listed in the supported types below. If nothing is specified, all types are returned. In general only a single type is allowed. The exception is that you can safely mix the geocode and establishment types, but note that this will have the same effect as specifying no types. Supported types are listed below. |
-| type                | `Input()`   | string                      | - |  
-| autoCompleteOptions | `Input()`   | AutocompleteOptions         | - |  all above inputs in one object! The passed data to this object will be merged with the input if they exists
-| onChange            | `Output()`  | PlaceResult | string | null | - |  event when the input form value changed
-| onAutocompleteSelected   | `Output()`  | PlaceResult            | - |  the event will be fired when a place has been selected via the google maps autocomplete component
-| onGermanAddressMapped  | `Output()`  | GermanAddress               | - |  the event will be fired when a place has been selected and mapped to the german address interface |
-| onLocationSelected  | `Output()`  | Location                    | - |  the event will be fired when a place has been selected via the google maps autocomplete component |
+| value               | `Input()`   |  `number` ;      | - |  the value of the component (number)
+| min                 | `Input()`   |  `number` ;      | - |  The minimum value that the counter can have.
+| max                 | `Input()`   | `number`;        | - | The maximum value that the counter can have.  
+| step                | `Input()`   | `number`         | - | The values at which the thumb will snap.
+| label               | `Input()`   | `string`         | - |  Label of the form field 
+| placeholder         | `Input()`   | `string`         | - |  Placeholder of the form field
+| change              | `Output()`  | `number`| - |  event when the input form value changed
 
-#### Supported Types
-
-| type | description |
-| --- | --- |
-| geocode | instructs the Places service to return only geocoding results, rather than business results. |
-| address | instructs the Places service to return only geocoding results with a precise address. | 
-| establishment | instructs the Places service to return only business results. |
-|regions | instructs the Places service to return any result matching the following types: locality, sublocality, postal_code, country, administrative_area1, administrative_area2 |
-| cities | instructs the Places service to return results that match either locality or administrative_area3. |
-
-
-### `mat-input-counter` 
-
-everything included in `matGoogleMapsAutocomplete` + the following
-
-| option | bind  |  type  |   default    | description  |
-|:-------------------|:--------:|:------:|:------------:|:-------------------------------------------------------------------------------------------------|    
-| addressLabelText  | `Input()`   |  string;      | Address using the component |  self explanatory
-| placeholderText  | `Input()`   |  string;      | Please enter the address |  self explanatory
-| requiredErrorText  | `Input()`   |  string;      | The address is required |  self explanatory
-| invalidErrorText  | `Input()`   |  string;      | The address is not valid |  self explanatory
-| appearance          | `Input()`   |  Appearance | string;      | Appearance.STANDARD |  Style the `mat-form-field` by setting the appearance option : standard, fill, outline or legacy
-
-### `mat-search-input-counter` 
-
-| option | bind  |  type  |   default    | description  |
-|:-------------------|:--------:|:------:|:------------:|:-------------------------------------------------------------------------------------------------|    
-| appearance          | `Input()`   |  Appearance | string;      | Appearance.STANDARD |  Style the `mat-form-field` by setting the appearance option : standard, fill, outline or legacy
-| searchAddressLabel  | `Input()`   |  string;      | `Search Address` |  input label
-| streetNameLabel     | `Input()`   |  string;      | `Street` |  input label
-| streetNumberLabel   | `Input()`   |  string;      | `Nr.` |  input label
-| postalCodeLabel     | `Input()`   |  string;      | `PLZ` |  input label
-| vicinityLabel       | `Input()`   |  string;      | `Locality` |  input label
-| localityLabel       | `Input()`   |  string;      | `Locality` |  input label
-| showVicinity       | `Input()`   |  boolean;      | `false` |  input label - whether to display the vecinity
-| readonly             | `Input()`   |  boolean;      | `false` |  readonly input
-| disableSearch             | `Input()`   |  boolean;      | `false` |  disabled users to search a place
-| value             | `Input()`   |  `GermanAddress`;          | - | the initial value of the component  
-| country             | `Input()`   | string | string[];          | - | can be used to restrict results to specific groups. Currently, you can use componentRestrictions to filter by up to 5 countries. Countries must be passed as as a two-character, ISO 3166-1 Alpha-2 compatible country code. Multiple countries must be passed as a list of country codes.  
-| placeIdOnly         | `Input()`   | boolean                     | - | can be used to instruct the Autocomplete widget to retrieve only Place IDs. On calling getPlace() on the Autocomplete object, the PlaceResult made available will only have the place id, types and name properties set. You can use the returned place ID with calls to the Places, Geocoding, Directions or Distance Matrix services.
-| strictBounds        | `Input()`   | boolean                     | - | is a boolean specifying whether the API must return only those places that are strictly within the region defined by the given bounds. The API does not return results outside this region even if they match the user input.
-| types               | `Input()`   | string[]                    | - |  An array of types specifies an explicit type or a type collection, as listed in the supported types below. If nothing is specified, all types are returned. In general only a single type is allowed. The exception is that you can safely mix the geocode and establishment types, but note that this will have the same effect as specifying no types. Supported types are listed below. |
-| type                | `Input()`   | string                      | - | 
-| onGermanAddressMapped  | `Output()`  |  EventEmitter<GermanAddress> | string;      | Appearance.STANDARD |  asd
-
-
-<p align="center">
-  <img alt="@angular-material-extensions/input-counter" style="text-align: center;"
-   src="https://raw.githubusercontent.com/angular-material-extensions/input-counter/HEAD/assets/v3.0.0/search1.png">
-</p>
-
-```html
-<mat-card>
-   <mat-card-title>Auto Parse Address</mat-card-title>
-   <mat-card-content>
-     <!-- #######   here we go !! ######-->
-     <mat-search-input-counter appearance="outline"
-                                          country="de"
-                                          (onGermanAddressMapped)="onGermanAddressMapped($event)">
-     ></mat-search-input-counter>
-   </mat-card-content>
-</mat-card>
-```
-
-
-```typescript
-import {Appearance, GermanAddress, Location} from '@angular-material-extensions/input-counter';
-
- onGermanAddressMapped($event;: GermanAddress;) {
-    console.log('onGermanAddressMapped', $event);
-  }
-```
 
 
 
@@ -444,30 +217,7 @@ import {Appearance, GermanAddress, Location} from '@angular-material-extensions/
 ## [Documentation](https://angular-material-extensions.github.io/input-counter/doc/index.html)
 
 Please checkout the full documentation [here](https://angular-material-extensions.github.io//input-counter/doc/index.html) 
-or follow the official [tutorial](https://angular-material-extensions.github.io//input-counter/getting-started)
 
-
-<a name="run-demo-app-locally"/>
-
-## Run Demo App Locally
-
-- [clone this repo](https://github.com/angular-material-extensions/input-counter.git) by running
-```bash
-$ git clone https://github.com/angular-material-extensions/input-counter.git
-```
-
-- link the **@angular-material-extensions/input-counter** package
-
-```bash
-$ gulp link
-```
-
-- navigate to the demo app directory, install the dependencies and serve the app
-```bash
-$ cd demo && npm i && npm start
-```
-
-- the app is now hosted by `http://localhost:4200/`
 
 
 <a name="development"/>
@@ -489,6 +239,7 @@ $ cd demo && npm i && npm start
 - [@angular-material-extensions/pages](https://github.com/angular-material-extensions/pages)
 - [@angular-material-extensions/link-preview](https://github.com/angular-material-extensions/link-preview)
 - [@angular-material-extensions/password-strength](https://github.com/angular-material-extensions/password-strength)
+- [@angular-material-extensions/google-maps-autocomplete](https://github.com/angular-material-extensions/google-maps-autocomplete)
 - [@angular-material-extensions/select-country](https://github.com/angular-material-extensions/select-country)
 - [@angular-material-extensions/fab-menu](https://github.com/angular-material-extensions/fab-menu)
 - [@angular-material-extensions/faq](https://github.com/angular-material-extensions/faq)
@@ -506,5 +257,5 @@ $ cd demo && npm i && npm start
 
 ## License
 
-Copyright (c) 2019-2020 [Anthony Nahas](https://github.com/AnthonyNahas). Licensed under the MIT License (MIT)
+Copyright (c) 2020 [Anthony Nahas](https://github.com/AnthonyNahas). Licensed under the MIT License (MIT)
 
