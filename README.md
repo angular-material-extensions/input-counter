@@ -21,7 +21,7 @@
 
 <p align="center">
   <img alt="@angular-material-extensions/input-counter" style="text-align: center;"
-   src="https://raw.githubusercontent.com/angular-material-extensions/input-counter/HEAD/assets/ex1.gif">
+   src="https://raw.githubusercontent.com/angular-material-extensions/input-counter/HEAD/assets/v1/ex1.gif">
 </p>
 
 
@@ -185,12 +185,12 @@ formGroup: FormGroup;
 
 <p align="center">
   <img alt="@angular-material-extensions/input-counter" style="text-align: center;"
-   src="https://raw.githubusercontent.com/angular-material-extensions/input-counter/HEAD/assets/ex1.png">
+   src="https://raw.githubusercontent.com/angular-material-extensions/input-counter/HEAD/assets/v1/ex1.png">
 </p>
 
 <p align="center">
   <img alt="@angular-material-extensions/input-counter" style="text-align: center;"
-   src="https://raw.githubusercontent.com/angular-material-extensions/input-counter/HEAD/assets/ex2.png">
+   src="https://raw.githubusercontent.com/angular-material-extensions/input-counter/HEAD/assets/v1/ex2.png">
 </p>
 
 
