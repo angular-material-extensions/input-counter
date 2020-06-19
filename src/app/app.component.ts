@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {CustomizeDialogComponent, InputCounterOptions} from './dialogs/customize-dialog/customize-dialog.component';
 import {FormControl, FormGroup} from '@angular/forms';
+import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class AppComponent implements OnInit {
   title = 'input-counter';
   options: InputCounterOptions = {min: 0, max: 10, step: 1};
 
-  constructor(private dialog: MatDialog) {
+  constructor(angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics, private dialog: MatDialog) {
+    angulartics2GoogleAnalytics.startTracking();
   }
 
   openCustomizeDialog() {
