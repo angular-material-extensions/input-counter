@@ -1,7 +1,7 @@
 <p align="center">
   <img alt="angular-material-extensions's logo"
    height="256px" width="256px" style="text-align: center;" 
-   src="https://cdn.rawgit.com/angular-material-extensions/input-counter/master/assets/angular-material-extensions-logo.svg">
+   src="https://raw.githubusercontent.com/angular-material-extensions/input-counter/HEAD/assets/angular-material-extensions-logo.svg">
 </p>
 
 # @angular-material-extensions/input-counter - Autocomplete input component for google-maps built with angular material design
