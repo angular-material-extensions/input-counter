@@ -43,11 +43,11 @@
     "test:watch": "../../../node_modules/.bin/jest --coverage --watch"
   },
   "peerDependencies": {
-    "@angular/common": "^12.2.16",
-    "@angular/core": "^12.2.16",
-    "@angular/flex-layout": "^12.0.0-beta.35",
-    "@angular/cdk": "^12.2.13",
-    "@angular/material": "^12.2.13"
+    "@angular/common": "^14.x",
+    "@angular/core": "^14.x",
+    "@angular/flex-layout": "^14.x",
+    "@angular/cdk": "^14.x",
+    "@angular/material": "^14.x"
   },
   "dependencies": {
     "tslib": "^2.0.0"
