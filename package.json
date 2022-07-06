@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "i": "ng update --force",
+    "i": "ng update @nguniversal/express-engine@10 --force",
     "start": "ng serve --port 4125",
     "build": "ng build --statsJson",
     "build:docs": "npx compodoc -p projects/angular-material-extensions/google-maps-autocomplete/tsconfig.lib.json --hideGenerator --disableCoverage -d dist/browser/doc/",
