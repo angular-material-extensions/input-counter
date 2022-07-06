@@ -1,7 +1,7 @@
 {
   "name": "@angular-material-extensions/input-counter",
   "description": "Modern number input component built with angular and material design",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "homepage": "https://angular-material-extensions.github.io/input-counter",
   "author": {
     "name": "Anthony Nahas",
