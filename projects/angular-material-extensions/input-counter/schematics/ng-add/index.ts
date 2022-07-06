@@ -1,8 +1,8 @@
 import {chain, noop, Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import {addPackageJsonDependency, NodeDependency, NodeDependencyType} from '../helpers';
-import {getWorkspace} from '@schematics/angular/utility/config';
 import {addModuleImportToRootModule, getProjectFromWorkspace} from '@angular/cdk/schematics';
+import {getWorkspace} from '@angular/cli/utilities/config';
 
 /** Loads the full version from the given Angular package gracefully. */
 function loadPackageVersionGracefully(context: SchematicContext): string | null {
@@ -53,6 +53,7 @@ export function installPackageJsonDependencies(): Rule {
 export function addModuleToImports(options: any): Rule {
   return (host: Tree, context: SchematicContext) => {
     const workspace = getWorkspace(host);
+    // @ts-ignore
     const project = getProjectFromWorkspace(workspace, options.project);
     const moduleName = 'MatInputCounterModule';
 

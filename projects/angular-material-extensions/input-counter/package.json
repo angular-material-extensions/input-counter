@@ -25,7 +25,7 @@
     "url": "https://github.com/angular-material-extensions/input-counter/issues"
   },
   "scripts": {
-    "build": "../../../node_modules/.bin/ng build @angular-material-extensions/input-counter --prod",
+    "build": "../../../node_modules/.bin/ng build @angular-material-extensions/input-counter --configuration production",
     "build:watch": "../../../node_modules/.bin/ng build @angular-material-extensions/input-counter --watch",
     "build:schematics": "../../../node_modules/.bin/tsc -p tsconfig.schematics.json",
     "clean": "rm -rf ../../../dist",
