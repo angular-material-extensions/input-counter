@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "i": "ng update @angular/material@14 --force",
+    "i": "ng i --force",
     "start": "ng serve --port 4125",
     "build": "ng build --statsJson",
     "build:docs": "npx compodoc -p projects/angular-material-extensions/google-maps-autocomplete/tsconfig.lib.json --hideGenerator --disableCoverage -d dist/browser/doc/",
@@ -37,7 +37,7 @@
     "angulartics2": "^9.1.0",
     "express": "^4.15.2",
     "ngx-markdown": "^9.1.1",
-    "rxjs": "~6.5.4",
+    "rxjs": "~7.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
   },
