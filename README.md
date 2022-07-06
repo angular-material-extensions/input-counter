@@ -12,8 +12,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/angular-material-extensions/input-counter/badge.svg?branch=master)](https://coveralls.io/github/angular-material-extensions/input-counter?branch=master)
 [![Build Status](https://travis-ci.org/angular-material-extensions/input-counter.svg?branch=master)](https://travis-ci.org/angular-material-extensions/input-counter)
 [![CircleCI branch](https://img.shields.io/circleci/project/github/angular-material-extensions/input-counter/master.svg?label=circleci)](https://circleci.com/gh/angular-material-extensions/input-counter)
-[![dependency Status](https://david-dm.org/angular-material-extensions/input-counter/status.svg)](https://david-dm.org/angular-material-extensions/input-counter)
-[![devDependency Status](https://david-dm.org/angular-material-extensions/input-counter/dev-status.svg?branch=master)](https://david-dm.org/angular-material-extensions/input-counter#info=devDependencies)
 [![Greenkeeper Badge](https://badges.greenkeeper.io/angular-material-extensions/input-counter.svg)](https://greenkeeper.io/)
 [![license](https://img.shields.io/github/license/angular-material-extensions/input-counter.svg?style=flat-square)](https://github.com/angular-material-extensions/input-counter/blob/master/LICENSE)
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/gdi2290/awesome-angular)
@@ -54,24 +52,14 @@ View all the directives and components in action at [https://angular-material-ex
 <a name="dependencies"/>
 
 ## Dependencies
-* [Angular](https://angular.io) (*requires* Angular 2 or higher | we are using already V9 ;)
+* [Angular](https://angular.io) (*requires* Angular
 
 
 <a name="installation"/>
 
 ##  [Installation](https://angular-material-extensions.github.io/input-counter/getting-started)
 
-## 1. Install via *ng add*. (Recommended)
-
-If Angular Material Design is not setup, just run `ng add @angular/material` [learn more](https://material.angular.io/guide/getting-started)
-
-Now add the library via the `angular schematics` and everything will be setup for you
-```shell
-ng add @angular-material-extensions/input-counter
-```
-
-
-## 2. Install via *npm*. (Alternative) 
+## 1. Install via *npm*. 
 
 Now install `@angular-material-extensions/input-counter` via:
 ```shell
@@ -83,10 +71,10 @@ npm install --save @angular-material-extensions/input-counter
 ### Requirements (peer dependencies):
 
 for the ui input component, please consider to install the following packages
-- [angular animations v9.x](https://www.npmjs.com/package/@angular/animations)
-- [angular forms v9.x](https://www.npmjs.com/package/@angular/forms)
-- [angular material v9.x](https://www.npmjs.com/package/@angular/material)
-- [angular cdk v9.x](https://www.npmjs.com/package/@angular/cdk)
+- [angular animations v14.x](https://www.npmjs.com/package/@angular/animations)
+- [angular forms v14.x](https://www.npmjs.com/package/@angular/forms)
+- [angular material v14.x](https://www.npmjs.com/package/@angular/material)
+- [angular cdk v14.x](https://www.npmjs.com/package/@angular/cdk)
 
 ```bash
 npm i @angular/cdk @angular/material @angular/animations @angular/forms 
