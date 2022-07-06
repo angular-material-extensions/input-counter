@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 export interface InputCounterOptions {
@@ -17,19 +17,19 @@ export interface InputCounterOptions {
 })
 export class CustomizeDialogComponent implements OnInit {
 
-  customizeFG: FormGroup;
+  customizeFG: UntypedFormGroup;
 
   constructor(public dialogRef: MatDialogRef<CustomizeDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: InputCounterOptions) {
   }
 
   ngOnInit(): void {
-    this.customizeFG = new FormGroup({
-      min: new FormControl(this.data.min),
-      max: new FormControl(this.data.max),
-      step: new FormControl(this.data.step),
-      label: new FormControl(this.data.label),
-      placeholder: new FormControl(this.data.placeholder),
+    this.customizeFG = new UntypedFormGroup({
+      min: new UntypedFormControl(this.data.min),
+      max: new UntypedFormControl(this.data.max),
+      step: new UntypedFormControl(this.data.step),
+      label: new UntypedFormControl(this.data.label),
+      placeholder: new UntypedFormControl(this.data.placeholder),
     });
   }
 

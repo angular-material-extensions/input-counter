@@ -205,7 +205,6 @@
       }
     }
   },
-  "defaultProject": "input-counter",
   "cli": {
     "analytics": "7d642609-882d-4ec8-8f86-9bddc376febc"
   }

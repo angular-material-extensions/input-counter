@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {CustomizeDialogComponent, InputCounterOptions} from './dialogs/customize-dialog/customize-dialog.component';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
 
 @Component({
@@ -11,7 +11,7 @@ import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
 })
 export class AppComponent implements OnInit {
 
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
 
   title = 'input-counter';
   options: InputCounterOptions = {min: 0, max: 10, step: 1};
@@ -29,8 +29,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formGroup = new FormGroup({
-      inputCounter: new FormControl()
+    this.formGroup = new UntypedFormGroup({
+      inputCounter: new UntypedFormControl()
     });
 
     this.formGroup.get('inputCounter').valueChanges.subscribe(value => console.log('inout counter value: ', value));
